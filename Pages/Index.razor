@@ -1,7 +1,43 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
+@using MessageMocker.Data
+@inject ApplicationService ApplicationService
+@inject NavigationManager NavigationManager
 
-Welcome to your new app.
+List of known apps
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<br />
+
+@if (applications == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+
+    @foreach (var app in applications)
+    {
+        var id = app.Identifier;
+
+        <div class="application__card" @onclick="@(e  => Navigate(id))" >
+            <h2>@app.Name</h2>
+            <h6>@app.Description</h6>
+        </div> 
+    }
+
+}
+
+
+@code {
+    private ICollection<Data.Application> applications;
+
+    private void Navigate(Guid id)
+    {
+        NavigationManager.NavigateTo("/application/" + id);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        applications = ApplicationService.Applications();
+    }
+}

@@ -1,0 +1,16 @@
+﻿@page "/application/{Id:guid}"
+@inject NavigationManager NavigationManager
+
+<h3>Application @Id</h3>
+
+<h3 @onclick="Back">Back</h3>
+
+@code {
+    [Parameter]
+    public Guid Id { get; set; }
+
+    private void Back()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+}

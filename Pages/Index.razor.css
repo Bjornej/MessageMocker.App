@@ -1,0 +1,16 @@
+﻿.application__card {
+    width: 200px;
+    margin: 20px 10px;
+    display: inline-block;
+    border: 1px solid #b5b5b5;
+    padding: 10px;
+    border-radius: 6px;
+    max-height: 200px;
+    height: 200px;
+    overflow: hidden;
+    cursor:pointer;
+}
+
+    .application__card:hover {
+        background-color: #cfcfcf69;
+    }
