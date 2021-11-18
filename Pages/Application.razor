@@ -1,16 +1,54 @@
 ﻿@page "/application/{Id:guid}"
+@using MessageMocker.Data
 @inject NavigationManager NavigationManager
+@inject ApplicationService ApplicationService
 
-<h3>Application @Id</h3>
 
-<h3 @onclick="Back">Back</h3>
+<h3><span class="backButton" @onclick="Back">←</span> @Specification.Name</h3>
+
+
+
+
+
+<table>
+    <thead>
+        <tr><td>Comandi</td></tr>
+    </thead>
+    <tbody>
+        @foreach(var cmd in Specification.Commands)
+        {
+            <tr>@cmd.Name</tr>
+        }
+    </tbody>
+</table>
+
+
+<table>
+    <thead>
+        <tr><td>Eventi</td></tr>
+    </thead>
+    <tbody>
+        @foreach(var evt in Specification.Events)
+        {
+            <tr>@evt.Name</tr>
+        }
+    </tbody>
+</table>
 
 @code {
     [Parameter]
     public Guid Id { get; set; }
 
+    private ApplicationSpecification Specification { get; set; }
+
     private void Back()
     {
         NavigationManager.NavigateTo("/");
     }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Specification = ApplicationService.ApplicationSpecification(Id);
+    }
 }
+

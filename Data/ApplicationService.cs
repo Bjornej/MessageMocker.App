@@ -27,7 +27,32 @@ namespace MessageMocker.Data
                     Name = "Prova 3",
                     Description = "Test locale",
                 },
-            }; 
+            };
+        }
+
+
+        public ApplicationSpecification ApplicationSpecification(Guid id)
+        {
+            return new ApplicationSpecification()
+            {
+                Identifier = id,
+                Name = "Prova",
+                Commands = new CommandSpecification[]
+                {
+                    new CommandSpecification()
+                    {
+                        Name = "comandoprova"
+                    }
+                },
+
+                Events = new EventSpecification[]
+                {
+                    new EventSpecification()
+                    {
+                        Name = "eventoprova"
+                    }
+                },
+            };
         }
     }
 }
