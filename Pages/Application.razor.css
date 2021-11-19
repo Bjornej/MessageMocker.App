@@ -3,3 +3,23 @@
     border:1px solid gray;
     padding:6px;
 }
+
+.grid {
+    display:grid;
+    grid-template-columns:min-content 20px 1fr;
+}
+
+.grid_left {
+    grid-column-start:1;
+    grid-column-end:1;
+}
+
+.grid_right {
+    grid-column-start: 3;
+    grid-column-end: 3;
+}
+
+.editor {
+    width: 100%;
+    height: calc(100 vh - 133 px );
+}

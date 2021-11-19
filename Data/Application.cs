@@ -5,7 +5,7 @@ namespace MessageMocker.Data
     /// <summary>
     ///     Application handled by the program
     /// </summary>
-    internal class Application
+    public class Application
     {
         /// <summary>
         ///     Name of the application

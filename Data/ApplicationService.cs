@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace MessageMocker.Data
 {
-    internal class ApplicationService
+    public  class ApplicationService
     {
+
         public ICollection<Application> Applications()
         {
             return new List<Application>()
@@ -31,8 +34,9 @@ namespace MessageMocker.Data
         }
 
 
-        public ApplicationSpecification ApplicationSpecification(Guid id)
+        public async Task<ApplicationSpecification> ApplicationSpecification(Guid id)
         {
+
             return new ApplicationSpecification()
             {
                 Identifier = id,
@@ -41,7 +45,8 @@ namespace MessageMocker.Data
                 {
                     new CommandSpecification()
                     {
-                        Name = "comandoprova"
+                        Name = "ServiziCgn.Imu.BackOffice.Events.Public.CasoImpositivoImuCgnCreato",
+                        Sample = "{\"AnnoImposta\": 0,\"CodiceComune\": \"string\",\"IdCasoImpositivo\": 0,\"EventId\": \"219a0dfb-2d03-431e-be28-19bdc45be724\",  \"CorrelationId\": \"09889a02-17d9-4ce4-a60a-3c3cb923fedd\",  \"OriginatorId\": \"34c2c04d-4a6d-4636-8c90-f5f69e069d4d\",  \"TimeStamp\": \"2019-08-24T14:15:22Z\",  \"CurrentUserId\": {}}"
                     }
                 },
 
@@ -49,7 +54,8 @@ namespace MessageMocker.Data
                 {
                     new EventSpecification()
                     {
-                        Name = "eventoprova"
+                        Name = "ServiziCgn.Imu.BackOffice.Events.Public.CasoImpositivoImuCgnSostituito",
+                        Sample = "{\"AnnoImposta\": 0,\"CodiceComune\": \"string\",\"IdCasoImpositivo\": 0,\"EventId\": \"219a0dfb-2d03-431e-be28-19bdc45be724\",  \"CorrelationId\": \"09889a02-17d9-4ce4-a60a-3c3cb923fedd\",  \"OriginatorId\": \"34c2c04d-4a6d-4636-8c90-f5f69e069d4d\",  \"TimeStamp\": \"2019-08-24T14:15:22Z\",  \"CurrentUserId\": {}}"
                     }
                 },
             };
